@@ -23,7 +23,8 @@ jobs:
     environment:
       name: 'Development'
     steps:
-        
+    - uses: actions/checkout@v2
+  
    #Login in your azure subscription using a service principal (credentials stored as GitHub Secret in repo)
     - name: Azure Login
       uses: azure/login@v1
