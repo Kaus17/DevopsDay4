@@ -20,7 +20,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.resourceGroupName }}
+        resourceGroupName: RG1
         template: ./bicep/script.bicep
         parameters: 'storagePrefix=mystore storageSKU=Standard_LRS ResourceGroup=RG1'
         failOnStdErr: false
