@@ -87,7 +87,8 @@ param vmsize string = 'Standard_B1ms'
 param License string = 'Windows_Server'
 param username string = 'Kaustubh'
 @minLength(12)
-param password string = 'Kaustubh12345'
+@secure
+param password string
 resource WinVM 'Microsoft.Compute/virtualMachines@2022-11-01' = {
   name: VMName
   location: location
@@ -184,7 +185,8 @@ resource VM2nic 'Microsoft.Network/networkInterfaces@2022-05-01' = {
 param VM2vmsize string = 'Standard_D2s_v3'
 param VM2username string = 'Kaustubh'
 @minLength(12)
-param VM2password string = 'Kaustubh12345'
+@secure
+param VM2password string
 resource LinuxVM 'Microsoft.Compute/virtualMachines@2022-11-01' = {
   name: VM2Name
   location: location
