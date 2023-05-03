@@ -1,0 +1,42 @@
+name: "DevopsDay4 Build and Test"
+
+#Triggers (uncomment line below to use it)
+on: [push, workflow_dispatch]
+
+#Environment variables https://docs.github.com/en/actions/learn-github-actions/environment-variables
+env:
+  RESOURCE-GROUP: RG1
+  LOCATION: eastus
+  TEMPLATE-FILE: .azure/bicep/script.bicep
+  SUBSCRIPTION-ID: "bb4195e0-db09-4dff-a647-9cb334270aec"
+
+
+jobs:
+  #Build, test and publish .net web project in repository
+  buildandtest:
+    runs-on: ubuntu-latest
+        
+  # Use Bicep to deploy infrastructure + Publish webapp 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: buildandtest
+    environment:
+      name: 'Development'
+    steps:
+        
+   #Login in your azure subscription using a service principal (credentials stored as GitHub Secret in repo)
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+           
+    # Deploy Azure WebApp using Bicep file
+    - name: deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ env.SUBSCRIPTION-ID }}
+        resourceGroupName: ${{ env.RESOURCE-GROUP }}
+        template: bicep-template/script.bicep
+        failOnStdErr: false   
+    
+    
