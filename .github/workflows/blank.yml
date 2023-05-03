@@ -22,5 +22,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: RG1
         template: ./script.bicep
-        parameters: 'password= Kaustubh12345 VM2password= Kaustubh12345'
+        parameters: 'password=Kaustubh12345 VM2password=Kaustubh12345'
         failOnStdErr: false
