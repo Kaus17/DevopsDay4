@@ -1,5 +1,8 @@
 on: [push]
 name: Azure ARM
+env:
+  RESOURCE-GROUP: RG1
+  LOCATION: eastus
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
