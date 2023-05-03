@@ -7,7 +7,7 @@ on: [push, workflow_dispatch]
 env:
   RESOURCE-GROUP: RG1
   LOCATION: eastus
-  TEMPLATE-FILE: /bicep/script.bicep
+  TEMPLATE-FILE: /script.bicep
   SUBSCRIPTION-ID: "bb4195e0-db09-4dff-a647-9cb334270aec"
 
 
